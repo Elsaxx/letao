@@ -34,8 +34,12 @@ ul {
     position: fixed;
     left: 0;
     top: 0;
-
+    z-index:999;
     background-color: #222D32;
+    transition: all 1s;
+}
+.lt_aside.hidemenu {
+    left: -180px;
 }
 .lt_aside .lt_title {
     width: 100%;
@@ -43,8 +47,9 @@ ul {
     background-color:#367FA9;
     text-align: center;
     line-height: 50px;
+   
 }
-.lt_title a {   
+.lt_title a { 
     font-size: 24px;
 
 }
@@ -106,6 +111,13 @@ ul {
    background-color: pink;
    padding-left: 180px;
    padding-top: 50px;
+   transition: all 1s;
+
+}
+
+/* 改padding-left值 */
+.lt_main.hidemenu {
+    padding-left: 0;
 }
 .lt_main .lt_topbar {
    width: 100%;
@@ -114,8 +126,12 @@ ul {
    left: 0;
    top: 0;
    padding-left: 180px;
-   z-index: 999;
+   transition: all 1s;
    background-color: #3C8DBC;
+}
+/* 改值 */
+.lt_topbar.hidemenu {
+    padding-left: 0;
 }
 .lt_topbar  a {
     display: block;

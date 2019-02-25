@@ -24,10 +24,17 @@ $(document).ajaxStop(function () {
 
 
 //等待dom结构加载完成之后才会执行
-$(function(){
+$(function () {
     // 1. 左侧二级菜单的切换
-    $('.lt_aside .category').click(function(){
+    $('.lt_aside .category').click(function () {
         $(this).next().stop().slideToggle();
+    });
+
+    // 2. 左侧整体菜单的切换,改变left值
+    $('.lt_topbar .icon_menu').click(function () {
+        $('.lt_aside').toggleClass('hidemenu');
+        $('.lt_main').toggleClass('hidemenu');
+        $('.lt_topbar').toggleClass('hidemenu');
     })
+
 })
- 
