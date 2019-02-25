@@ -15,3 +15,19 @@ $(document).ajaxStop(function () {
     }, 500)
 
 })
+
+
+// 公用的功能:
+// 1. 左侧二级菜单的切换
+// 2. 左侧整体菜单的切换
+// 3. 公共的退出功能 
+
+
+//等待dom结构加载完成之后才会执行
+$(function(){
+    // 1. 左侧二级菜单的切换
+    $('.lt_aside .category').click(function(){
+        $(this).next().stop().slideToggle();
+    })
+})
+ 
