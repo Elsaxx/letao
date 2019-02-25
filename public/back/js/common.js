@@ -36,5 +36,25 @@ $(function () {
         $('.lt_main').toggleClass('hidemenu');
         $('.lt_topbar').toggleClass('hidemenu');
     })
+   
+    // 3. 公共的退出功能
+    $('.lt_topbar .icon_logout').click(function(){
+        //点击退出功能,让模态框显示 
+        $('#logoutModal').modal('show');
+    })
 
+    //4.点击退出按钮(ajax请求退出)
+    $('#logoutBtn').click(function(){
+        $.ajax({
+            type: 'get',
+            url: '/employee/employeeLogout',
+            dataType: 'json',
+            success: function( info ){
+                console.log(info);    
+                if(info.success){
+                    location.href = 'login.html';
+                }
+            }
+        })
+    })
 })
