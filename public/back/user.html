@@ -48,7 +48,7 @@
                 <li>
                     <a href="product.html">
                         <i class="glyphicon glyphicon-tags"></i>
-                        <span>用户管理</span>
+                        <span>商品管理</span>
                     </a>
                 </li>
             </ul>
@@ -62,20 +62,113 @@
             <a href="#" class="pull-right icon_logout"><i class="glyphicon glyphicon-log-out"></i></a>
         </div>
         <div class="container-fluid">
-                <ol class="breadcrumb mt_top">
-                        <li><a href="#" class="h">管理系统</a></li>
-                        <li class="active">首页</li>
-                </ol>
+            <ol class="breadcrumb mt_top">
+                <li><a href="#" class="h">管理系统</a></li>
+                <li class="active">用户管理</li>
+            </ol>
+            <!-- 表格 -->
+            <div class="lt-content">
+                <table class='table  table-bordered table-hover'>
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>用户名</th>
+                            <th>手机号</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 挖个坑 -->
+                    </tbody>
+                </table>
+                <!-- 分页 -->
+                <div class="pull-right">
+                   <ul id="paginator"></ul>
+                </div>
+            </div>
         </div>
     </div>
+   
+    <!-- 点击禁用会出现一个模态框 -->
+    <div class="modal fade " id="userModal">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" ><span>&times;</span></button>
+                  <h4 class="modal-title">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                  <p class="red">
+                      <i class="glyphicon glyphicon-info-sign"></i>
+                      您确定要执行此项操作吗?
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-primary" id="confirmBtn">确认</button>
+                </div>
+              </div> 
+            </div> 
+    </div> 
+
+
+      <!-- 点击退出功能添加的模态框 -->
+      <div class="modal fade " id="logoutModal">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" ><span>&times;</span></button>
+              <h4 class="modal-title">温馨提示</h4>
+            </div>
+            <div class="modal-body">
+              <p class="red">
+                  <i class="glyphicon glyphicon-info-sign"></i>
+                  您确定要退出后台管理系统吗？
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary" id="logoutBtn">退出</button>
+            </div>
+          </div> 
+        </div> 
+      </div> 
+    <!-- 
+        1.引包
+        2.创建模板
+        3.准备数据
+        4.完成渲染
+     -->
+    <script type="text/html" id="tpl">
+         {{each rows v i}}
+            <tr>
+                <td>{{ i + 1 + (page-1)*size}}</td>
+                <td>{{ v.username}}</td>
+                <td>{{ v.mobile}}</td>
+                <td>{{ v.isDelete === 1 ? '正常' : '已禁用'}}</td>
+                <td data-id="{{ v.id }}">
+                    {{if v.isDelete === 1}}
+                    <button class="btn btn-danger">禁用</button>
+                    {{else}}
+                    <button class="btn btn-success">已启用</button>
+                     {{/if}}
+                </td>
+            </tr>
+        {{/each}}
+    </script>
+
+
 
     <script src="./lib/jquery/jquery.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/isLogin.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="./js/user.js"></script>
 </body>
 
 </html>
